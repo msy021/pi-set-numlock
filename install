@@ -1,0 +1,19 @@
+#! /bin/sh
+
+set -e
+
+cd "$(dirname "$0")/"
+
+echo "=> Installing numlockx...\n"
+sudo apt-get -y install numlockx
+
+echo "=> Installing startup script...\n"
+
+
+sudo cp setnumlock.sh /etc/init.d/
+sudo chmod +x /etc/init.d/setnumlock.sh
+
+sudo update-rc.d setnumlock.sh defaults
+sudo /etc/init.d/setnumlock.sh start
+
+echo "numlockx and startupscript installed."

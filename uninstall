@@ -1,0 +1,16 @@
+#! /bin/sh
+
+set -e
+
+cd "$(dirname "$0")/"
+
+echo "=> removing startup script...\n"
+sudo update-rc.d setnumlock.sh remove
+
+echo "=> Removing files...\n"
+sudo rm -rf /etc/init.d/setnumlock.sh
+
+echo "=> Removing numlockx...\n"
+sudo apt-get remove numlockx
+
+echo "numlockx and startupscript uninstalled.\n"
